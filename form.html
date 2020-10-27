@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>AJAX Contactform & PHPMailer</title>
+
+    <link rel="shortcut icon" href="#">
+    <!-- Bootstrap css-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<!-- jQuery core -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<body>
+    
+<div class="container">
+	<div class="row">
+	
+		<div class="col-md-12 col-lg-12">
+
+			<!-- contactform -->
+			<form role="form" id="contactform" action="" method="post">
+
+				<div class="response"></div><!-- ajax response -->
+				
+				<div class="text-center"><!-- spinner -->
+					<div class="spinner spinner-border text-secondary" style="display:none;" role="status">
+					  <span class="sr-only">Loading...</span>
+					</div>
+				</div>
+				
+				<input type="text" style="display:none;" name="honeypot">
+				
+				<div class="form-group">
+					<label for="name"> Name: <span class="text-danger">&#8902;</span></label>
+					<input type="text" class="form-control" name="user_name">
+				</div>
+
+				<div class="form-group">
+					<label for="email"> Email: <span class="text-danger">&#8902;</span></label>
+					<input type="text" class="form-control" name="user_email">
+				</div>
+				
+				<div class="form-group">
+					<label for="subject"> Subject:</label>
+					<input type="text" class="form-control" name="user_subject">
+				</div>
+
+				<div class="form-group">
+					<label for="message"> Message: <span class="text-danger">&#8902;</span></label>
+					<textarea name="user_message" class="form-control" rows="6" id="content"></textarea>
+				</div>
+				
+				<div class="form-group">
+					<label>Attachment(s):</label>
+					<input type="file" class="form-control-file" name="user_attachment[]" multiple="multiple">
+					
+				</div>
+				
+				<div class="form-group">
+					<label for="required"><span class="text-danger">&#8902;</span> required fields</label>
+				</div>
+				
+				<div class="form-group">
+					
+					<button type="submit" class="btn btn-lg btn-success w-100">Send!</button>
+				</div>
+
+			</form>
+			
+		</div>
+		
+	</div>
+		
+</div>
+
+<script>
+$("#contactform").on('submit',(function(e){	
+	e.preventDefault();
+	$('.spinner').show();
+	
+	$.ajax({
+		url: "send.php",
+		type: "POST",
+		data:  new FormData(this),
+		contentType: false,
+		cache: false,
+		processData:false,
+		success: function(data){
+			$(".response").html(data);
+			$('.spinner').hide();
+		},
+				
+	});
+	
+}));
+</script>
+
+	
+</body>
+	
+</html>
+		
