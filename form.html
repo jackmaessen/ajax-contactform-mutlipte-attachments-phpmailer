@@ -79,8 +79,7 @@
 
 <script>
 $("#user_attachment").on('change',(function(e){	
-
-	var input = $('#user_attachment')[0]; 
+    var input = $('#user_attachment')[0]; 
     var children = "";
     for (var i = 0; i < input.files.length; ++i) {
         children += '<li>' + input.files.item(i).name + '</li>';
