@@ -64,8 +64,7 @@
 					<label for="required"><span class="text-danger">&#8902;</span> required fields</label>
 				</div>
 				
-				<div class="form-group">
-					
+				<div class="form-group">					
 					<button type="submit" class="btn btn-lg btn-success w-100">Send!</button>
 				</div>
 
@@ -90,7 +89,7 @@ $("#user_attachment").on('change',(function(e){
 	
 $("#contactform").on('submit',(function(e){	
 	e.preventDefault();
-	$('.spinner').show();
+	$('.spinner, .spinner-text').show();
 	
 	$.ajax({
 		url: "send.php",
@@ -101,7 +100,7 @@ $("#contactform").on('submit',(function(e){
 		processData:false,
 		success: function(data){
 			$(".response").html(data);
-			$('.spinner').hide();
+			$('.spinner, .spinner-text').hide();
 		},
 				
 	});
