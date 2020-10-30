@@ -28,7 +28,7 @@ function check_doc_mime( $tmpname ) {
 		$mtype == ( "application/vnd.openxmlformats-officedocument.presentationml.presentation" ) || 
 		$mtype == ( "image/jpeg" ) || 
 		$mtype == ( "image/png" ) || 
-		//$mtype == ( "xxx/xxx" ) ||  extend your desired list by adding more fileds
+		//$mtype == ( "xxx/xxx" ) ||  extend your desired list by adding more files
 		$mtype == ( "application/pdf" ) ) {
         return TRUE;
     }
